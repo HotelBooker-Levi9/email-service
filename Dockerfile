@@ -1,3 +1,5 @@
-From openjdk:8
-copy ./target/email-service-0.0.1-SNAPSHOT.jar email-service-0.0.1-SNAPSHOT.jar
-CMD ["java","-jar","email-service-0.0.1-SNAPSHOT.jar"]
+FROM maven:3.8.2-jdk-8
+WORKDIR /email-service
+COPY . .
+RUN mvn clean install
+CMD mvn spring-boot:run
